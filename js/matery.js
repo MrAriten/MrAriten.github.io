@@ -180,7 +180,7 @@ setTimeout(function () {
 }, 2200);
 
 //黑夜模式判断
-if (localStorage.getItem('isDark') === '1') {
+if (localStorage.getItem('isDark') !== '1') {
     document.body.classList.add('DarkMode');
     $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
 } else {
