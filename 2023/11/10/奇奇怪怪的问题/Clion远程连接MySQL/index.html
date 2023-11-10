@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo博客搭建过程中的踩的坑, MrAriten的博客">
-    <meta name="description" content="我搭建这个基于hexo博客踩到的坑">
+    <meta name="keywords" content="Clion远程连接MySQL, MrAriten的博客">
+    <meta name="description" content="一些遇到的问题">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo博客搭建过程中的踩的坑 | MrAriten的博客</title>
+    <title>Clion远程连接MySQL | MrAriten的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -295,7 +295,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo博客搭建过程中的踩的坑</h1>
+                    <h1 class="description center-align post-title">Clion远程连接MySQL</h1>
                 </div>
             </div>
         </div>
@@ -319,12 +319,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/npm/">
-                                <span class="chip bg-color">npm</span>
+                            <a href="/tags/Clion/">
+                                <span class="chip bg-color">Clion</span>
+                            </a>
+                        
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
                     </div>
@@ -348,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-09
+                    2023-11-10
                 </div>
                 
 
@@ -362,7 +366,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    717
+                    777
                 </div>
                 
 
@@ -392,48 +396,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="博客搭建教程"><a href="#博客搭建教程" class="headerlink" title="博客搭建教程"></a>博客搭建教程</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_58608526/article/details/124652412">Hexo+Github博客搭建教程_hexo github-CSDN博客</a></p>
-<p>主要的流程参考这个博客即可，其余遇到的问题都在下面</p>
-<h1 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h1><h2 id="大部分命令都是在windows的命令行完成的，而不是博客中说的可以用bit-bash"><a href="#大部分命令都是在windows的命令行完成的，而不是博客中说的可以用bit-bash" class="headerlink" title="大部分命令都是在windows的命令行完成的，而不是博客中说的可以用bit bash"></a>大部分命令都是在windows的命令行完成的，而不是博客中说的可以用bit bash</h2><p>我安装了node.js后，bit bash是找不到node 和 npm 命令的，所有命令都是在windows的命令行中执行</p>
-<h2 id="在npm-install时，记得先切换源"><a href="#在npm-install时，记得先切换源" class="headerlink" title="在npm install时，记得先切换源"></a>在npm install时，记得先切换源</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="如何将Linux的数据库链接到Clion中"><a href="#如何将Linux的数据库链接到Clion中" class="headerlink" title="如何将Linux的数据库链接到Clion中"></a>如何将Linux的数据库链接到Clion中</h1><h2 id="①先确认是否打开SSH服务"><a href="#①先确认是否打开SSH服务" class="headerlink" title="①先确认是否打开SSH服务"></a>①先确认是否打开SSH服务</h2><p>如果是虚拟机，可以直接在设置处设置SSH，不确认开了没可以输入下面这个命令进行确认</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl status sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>如果没有安装ssh服务，可以通过如下命令安装ssh服务</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openssh-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>然后根据下面的命令打开ssh</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">service</span> sshd start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="在执行npm命令和hexo命令时要注意进入到你的博客文件夹中"><a href="#在执行npm命令和hexo命令时要注意进入到你的博客文件夹中" class="headerlink" title="在执行npm命令和hexo命令时要注意进入到你的博客文件夹中"></a>在执行npm命令和hexo命令时要注意进入到你的博客文件夹中</h2><h2 id="安装hexo时的错误"><a href="#安装hexo时的错误" class="headerlink" title="安装hexo时的错误"></a>安装hexo时的错误</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45978154/article/details/129764964">Hexo系列 | Hexo构建部署报错：ERROR Cannot find module ‘hexo‘ from ‘x:\xx\xxx\xxxx‘_luvJie-7c的博客-CSDN博客</a></p>
-<h2 id="hexo-init后面不需要加名字，加名字再新建一个该名字的文件夹"><a href="#hexo-init后面不需要加名字，加名字再新建一个该名字的文件夹" class="headerlink" title="hexo init后面不需要加名字，加名字再新建一个该名字的文件夹"></a>hexo init后面不需要加名字，加名字再新建一个该名字的文件夹</h2><h2 id="hexo-d失败，多半是因为网络原因"><a href="#hexo-d失败，多半是因为网络原因" class="headerlink" title="hexo d失败，多半是因为网络原因"></a>hexo d失败，多半是因为网络原因</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63230155/article/details/132070860">完美解决 git报错fatal: unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset-CSDN博客</a></p>
-<pre class="line-numbers language-none"><code class="language-none">git config --global --unset http.proxy 
-git config --global --unset https.proxy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="②CLion中如何连接"><a href="#②CLion中如何连接" class="headerlink" title="②CLion中如何连接"></a>②CLion中如何连接</h2><p>右边的数据库侧边栏，点开后点击左上角的加号-》数据源-》mysql</p>
+<p>在SSH/SSL中勾选打开SSH隧道，然后选取一个SSH端口，再回到主页面点测试连接，就能发现已经连接了。</p>
+<h2 id="③如何在linux命令行登陆mysql"><a href="#③如何在linux命令行登陆mysql" class="headerlink" title="③如何在linux命令行登陆mysql"></a>③如何在linux命令行登陆mysql</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>-u后面跟着的是用户名，回车之后会要求你输入密码</p>
+<p>如果只输入一个mysql是不会让你登陆的，除非没有设置权限</p>
+<h1 id="在Linux端操作数据库的一些问题"><a href="#在Linux端操作数据库的一些问题" class="headerlink" title="在Linux端操作数据库的一些问题"></a>在Linux端操作数据库的一些问题</h1><h2 id="①如何设置用户权限？（千万不要点击revoke-all-privileges！！）"><a href="#①如何设置用户权限？（千万不要点击revoke-all-privileges！！）" class="headerlink" title="①如何设置用户权限？（千万不要点击revoke all privileges！！）"></a>①如何设置用户权限？（千万不要点击revoke all privileges！！）</h2><p>如果对root使用了这个操作，以后连接上数据库就什么都做不了了！</p>
+<p>解决方法：用系统最高权限账号登陆mysql</p>
+<p>系统最高权限账号密码的记录位置：etc/mysql/debian.cnf</p>
+<p>需要root权限才能查看，如何获取root权限：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>回车后需要输入密码，然后控制台就进入root权限了</p>
+<p>在命令行输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql <span class="token parameter variable">-u</span> debian-sys-maint <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>然后输入密码就能以最高权限操作mysql</p>
+<h3 id="客户端操作会更方便一点"><a href="#客户端操作会更方便一点" class="headerlink" title="客户端操作会更方便一点"></a>客户端操作会更方便一点</h3><p>在connection右键，修改用户名和密码，然后登陆进去，左边有一个Users and privileges的界面，点开那个就能够操作所有用户的权限了。</p>
+<h2 id="②如果全部密码都记不得怎么登陆？（不要随便更改数据库的密码）"><a href="#②如果全部密码都记不得怎么登陆？（不要随便更改数据库的密码）" class="headerlink" title="②如果全部密码都记不得怎么登陆？（不要随便更改数据库的密码）"></a>②如果全部密码都记不得怎么登陆？（不要随便更改数据库的密码）</h2><p>如果连最高权限都登陆不进去，还有一个方法可以绕过mysql的权限检测</p>
+<h3 id="首先通过终端的root权限用vim打开etc-mysql-my-cnf"><a href="#首先通过终端的root权限用vim打开etc-mysql-my-cnf" class="headerlink" title="首先通过终端的root权限用vim打开etc/mysql/my.cnf"></a>首先通过终端的root权限用vim打开etc/mysql/my.cnf</h3><p>然后在最后添加下面的内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+skip-grant-tables<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>然后vim保存，保存后重新打开，设置其保存格式：</p>
+<p>vim中输入i是进入编辑模式，ESC是退出编辑模式，然后输入 : 进入命令模式</p>
+<p>由于vim默认保存格式是UTF-8，是不符合mysql要求的，所以要手动修改保存格式</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token assign-left variable">fileencoding</span><span class="token operator">=</span>cp936<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="在最后的deploy选项中，分支要选择main而不是master！"><a href="#在最后的deploy选项中，分支要选择main而不是master！" class="headerlink" title="在最后的deploy选项中，分支要选择main而不是master！"></a>在最后的deploy选项中，分支要选择main而不是master！</h2><h2 id="推荐主题"><a href="#推荐主题" class="headerlink" title="推荐主题"></a>推荐主题</h2><p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery/README_CN.md at develop · blinkfox/hexo-theme-matery (github.com)</a></p>
-<h2 id="emoji代码网站"><a href="#emoji代码网站" class="headerlink" title="emoji代码网站"></a>emoji代码网站</h2><p><a target="_blank" rel="noopener" href="https://smiley.cool/emoji-list.php">https://smiley.cool/emoji-list.php</a></p>
-<h2 id="更多的问题可以查看官方文档"><a href="#更多的问题可以查看官方文档" class="headerlink" title="更多的问题可以查看官方文档"></a>更多的问题可以查看官方文档</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
-<h2 id="如何卸载hexo"><a href="#如何卸载hexo" class="headerlink" title="如何卸载hexo"></a>如何卸载hexo</h2><p>直接(-g 的意思是全局)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-cli <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这是将其格式修改为ANSI，从而能让其应用配置</p>
+<h3 id="然后在命令行重启mysql服务"><a href="#然后在命令行重启mysql服务" class="headerlink" title="然后在命令行重启mysql服务"></a>然后在命令行重启mysql服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">service</span> mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>然后检查有无删除就</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> list <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>这时候发现</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>下还有很多没删，直接删除博客文件夹即可</p>
-<h2 id="最坑的一个——代码高亮问题——不要使用最新的hexo7-0-0版本，和matery不兼容"><a href="#最坑的一个——代码高亮问题——不要使用最新的hexo7-0-0版本，和matery不兼容" class="headerlink" title="最坑的一个——代码高亮问题——不要使用最新的hexo7.0.0版本，和matery不兼容"></a>最坑的一个——代码高亮问题——不要使用最新的hexo7.0.0版本，和matery不兼容</h2><p>我在7.0.0版本下捣鼓了半天，最后是在hexo init命令执行的时候，因为网络问题没有用到最新的hexo-starter，而hexo-starter在上周从6.3.0更新到了7.0.0版本的hexp</p>
-<p>INFO Cloning hexo-starter <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-starter.git">https://github.com/hexojs/hexo-starter.git</a><br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-starter.git/">https://github.com/hexojs/hexo-starter.git/</a>‘: Recv failure: Connection was reset<br>WARN git clone failed. Copying data instead</p>
-<p>阴差阳错安装了6.3.0的hexo，代码块才能高亮</p>
-<p>所以解决办法就是——执行hexo init时不要联网，这样hexo-starter的config中的hexo就是6.3.0版本了</p>
-<h2 id="hexo-d-和-hexo-s-展现的不一样"><a href="#hexo-d-和-hexo-s-展现的不一样" class="headerlink" title="hexo d 和 hexo s 展现的不一样"></a>hexo d 和 hexo s 展现的不一样</h2><p>config.yml文件的url地址没有修改，要修改成博客的地址而不是github项目的地址</p>
-<h2 id="如何让主题常驻夜间模式？"><a href="#如何让主题常驻夜间模式？" class="headerlink" title="如何让主题常驻夜间模式？"></a>如何让主题常驻夜间模式？</h2><p>在文件夹themes\hexo-theme-matery\source中找到matery.js</p>
-<p>拉到最下面把</p>
-<pre class="line-numbers language-none"><code class="language-none">//黑夜模式判断
-if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>改成 <code> !== '1'</code>即可</p>
-<h2 id="更多的内容可以看这个博客，官网的文档很多东西都不是最新的"><a href="#更多的内容可以看这个博客，官网的文档很多东西都不是最新的" class="headerlink" title="更多的内容可以看这个博客，官网的文档很多东西都不是最新的"></a>更多的内容可以看这个博客，官网的文档很多东西都不是最新的</h2><p>比如我改front-matter的image，看github官网的路径和这个博客的都不一样，这个博客的才是对的</p>
-<p>[<a target="_blank" rel="noopener" href="https://blog.17lai.site/posts/40300608/">三万字教程]基于Hexo的matery主题搭建博客并深度优化一站式完全教程 | 夜法之书 (17lai.site)</a></p>
+<p>这样才能够将配置设置好</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42833469/article/details/90674945">(161条消息) Linux下MySQL8.0版本忘记密码_名剑求瑕的博客-CSDN博客</a></p>
+<p>接着根据这篇博客修改密码即可重新登陆进去，注意我们服务器的mysql版本是8.0</p>
+<h3 id="最后记得将一开始的skip-grant-tables删除！"><a href="#最后记得将一开始的skip-grant-tables删除！" class="headerlink" title="最后记得将一开始的skip-grant-tables删除！"></a>最后记得将一开始的skip-grant-tables删除！</h3><h2 id="③skip-grant-tables不能够赋予权限"><a href="#③skip-grant-tables不能够赋予权限" class="headerlink" title="③skip-grant-tables不能够赋予权限"></a>③skip-grant-tables不能够赋予权限</h2><p>只能还是用最高级的权限去操作别的用户的权限，所以说不要轻易修改用户的名字和权限！</p>
 
                 
             </div>
@@ -460,7 +466,7 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrAriten.github.io/2023/11/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E7%9A%84%E5%9D%91/">https://MrAriten.github.io/2023/11/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E7%9A%84%E5%9D%91/</a>
+                    <a href="https://MrAriten.github.io/2023/11/10/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/Clion%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL/">https://MrAriten.github.io/2023/11/10/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/Clion%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -498,12 +504,16 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/npm/">
-                                    <span class="chip bg-color">npm</span>
+                                <a href="/tags/Clion/">
+                                    <span class="chip bg-color">Clion</span>
+                                </a>
+                            
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
                         </div>
@@ -546,9 +556,10 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/11/10/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/Clion%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL/">
                     <div class="card-image">
@@ -565,9 +576,9 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -580,6 +591,7 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -603,7 +615,7 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2023/11/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E7%9A%84%E5%9D%91/">
@@ -636,7 +648,6 @@ if (localStorage.getItem('isDark') === '1') {<span aria-hidden="true" class="lin
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
