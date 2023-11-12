@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++常忘的东西, MrAriten的博客">
-    <meta name="description" content="在学C++时常遗忘的一些知识">
+    <meta name="keywords" content="前缀和2——树状数组, MrAriten的博客">
+    <meta name="description" content="前缀和的一种高级数据结构，对于会修改的数组而言很方便">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++常忘的东西 | MrAriten的博客</title>
+    <title>前缀和2——树状数组 | MrAriten的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/book.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/coding.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++常忘的东西</h1>
+                    <h1 class="description center-align post-title">前缀和2——树状数组</h1>
                 </div>
             </div>
         </div>
@@ -323,6 +323,18 @@
                                 <span class="chip bg-color">C++</span>
                             </a>
                         
+                            <a href="/tags/%E6%95%B0%E7%BB%84/">
+                                <span class="chip bg-color">数组</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">
+                                <span class="chip bg-color">前缀和</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                <span class="chip bg-color">二叉树</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -331,8 +343,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" class="post-category">
-                                知识整理
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/" class="post-category">
+                                编程算法
                             </a>
                         
                     </div>
@@ -344,28 +356,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-10
+                    2023-11-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-11
+                    2023-11-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    741
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    3 分
                 </div>
                 
 
@@ -388,202 +400,89 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="char-a-char-a-char-a-char-char-a-之间的区别"><a href="#char-a-char-a-char-a-char-char-a-之间的区别" class="headerlink" title="char a,char a[],char *a,char *[],char * *a 之间的区别"></a>char a,char a[],char *a,char *[],char * *a 之间的区别</h1><ol>
-<li><p>char a</p>
-<p>定义了一个存储空间，存储的是char类型的变量</p>
-</li>
-<li><p>char a[]</p>
-<p>是一个字符数组，数组中的每一个元素是一个char类型的数据</p>
-</li>
-<li><p>char *a</p>
-<p><strong>字符串的本质（在计算机眼中）是其第一个字符的地址，c和c++中操作字符串是通过内存中其存储的首地址来完成的</strong></p>
-<p>对于char a[]来说a代表的是数组的首地址，那么对char *a来说a代表的也是字符串的首地址</p>
-<p>因此char a[]和char *a可以放到一块看，这两个没有本质区别。</p>
-<p>但是要注意对于char s[]和char* a我们可以有<code>a=s</code>，但不能有<code>s=a</code>，因为创建数组的时候s的地址不为空已经确定，但是a是一个空指针，不能将非空的地址指向空指针</p>
-</li>
-<li><p>char *a[]</p>
-<p><code>*</code>的优先级是低于<code>[]</code>的，因此要先看<code>a[]</code>再看 <code>*</code></p>
-<p>因此这是一个char数组，数组中的每一个元素都是指针，这些指针指向char类型</p>
-<p><code>char *a[ ] = {"China","French","America","German"}</code></p>
-</li>
-<li><p>char **a</p>
-<p>两个**代表相同的优先级，因此从右往左看，即<code>char*(*a)</code></p>
-<p>char *a不就是一个字符串数组，a代表首地址。那么char * (*a)就是和char *a[]一样的数据结构</p>
-</li>
-</ol>
-<h1 id="static-和const分别怎么用，类里面static和const可以同时修饰成员函数吗"><a href="#static-和const分别怎么用，类里面static和const可以同时修饰成员函数吗" class="headerlink" title="static 和const分别怎么用，类里面static和const可以同时修饰成员函数吗"></a>static 和const分别怎么用，类里面static和const可以同时修饰成员函数吗</h1><ul>
-<li><h2 id="static"><a href="#static" class="headerlink" title="static"></a><strong>static</strong></h2><ul>
-<li><p>static对于变量</p>
-<ol>
-<li><p>局部变量</p>
-<p>在局部变量之前加上关键字static，局部变量就被定义成为一个局部静态变量。</p>
-<p>内存中的位置：data段</p>
-<p>初始化：局部的静态变量只能被初始化一次</p>
-<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域随之结束。</p>
-<blockquote>
-<p>当static用来修饰局部变量的时候，它就<strong>改变了局部变量的存储位置（从原来的栈中存放改为静态存储区）及其生命周期（局部静态变量在离开作用域之后，并没有被销毁，而是仍然驻留在内存当中，直到程序结束，只不过我们不能再对他进行访问），但未改变其作用域。</strong></p>
-</blockquote>
-</li>
-<li><p>全局变量</p>
-<p>在全局变量之前加上关键字static，全局变量就被定义成为一个全局静态变量。</p>
-<p>内存中的位置：静态存储区（静态存储区在整个程序运行期间都存在）</p>
-<p>初始化：未经初始化的全局静态变量会被程序自动初始化为0</p>
-<p>作用域：全局静态变量在声明他的文件之外是不可见的。准确地讲从定义之处开始到文件结尾。(只能在本文件中存在和使用)</p>
-<blockquote>
-<p>全局变量本身就是静态存储方式， 静态全局变量当然也是静态存储方式。两者的区别在于非静态全局变量的作用域是整个源程序， 当一个源程序由多个源文件组成时，非静态的全局变量在各个源文件中都是有效的（在其他源文件中使用时加上extern关键字重新声明即可）。 而<strong>静态全局变量则限制了其作用域， 即只在定义该变量的源文件内有效， 在同一源程序的其它源文件中不能使用它</strong>。</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>static对于函数</p>
-<p>修饰普通函数，表明函数的作用范围，仅在定义该函数的文件内才能使用。在多人开发项目时，为了防止与他人命名空间里的函数重名，可以将函数定位为 static。（和全局变量一样限制了作用域而已）</p>
-</li>
-<li><p>static对于类</p>
-<ol>
-<li><p>成员变量</p>
-<p>用static修饰类的数据成员实际使其成为类的全局变量，会被类的所有对象共享，包括派生类的对象。</p>
-<p>因此，<strong>static成员必须在类外进行初始化，而不能在构造函数内进行初始化。不过也可以用const修饰static数据成员在类内初始化 。</strong></p>
-</li>
-<li><p>成员函数</p>
-<p>用static修饰成员函数，使这个类只存在这一份函数，所有对象共享该函数，不含this指针。</p>
-<p>静态成员是可以独立访问的，也就是说，无须创建任何对象实例就可以访问。</p>
-<p><strong>不可以同时用const和static修饰成员函数。</strong></p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h2 id="const"><a href="#const" class="headerlink" title="const"></a><strong>const</strong></h2><ol>
-<li><p>const修饰变量：限定变量为不可修改。</p>
-</li>
-<li><p>const修饰指针：指针常量和指向常量的指针</p>
-</li>
-<li><p>const和函数：有以下几种形式</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">const int&amp; fun(int&amp; a); //修饰返回值
-int&amp; fun(const int&amp; a); //修饰形参
-int&amp; fun(int&amp; a) const{} //const成员函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>const和类：①const修饰成员变量，在某个对象的声明周期内是常量，但是对于整个类而言是可以改变的。因为类可以创建多个对象，不同的对象其const成员变量的值是不同的。切记，<strong>不能在类内初始化const成员变量</strong>，因为类的对象没创建前，编译器并不知道const成员变量是什么，因此const数据成员只能在初始化列表中初始化。②const修饰成员函数，主要目的是防止成员函数修改成员变量的值，即该成员函数并不能修改成员变量。③const对象，常对象，常对象只能调用常函数。</p>
-</li>
-<li><p>限定成员函数不可以修改任何数据成员</p>
-</li>
-</ol>
-</li>
-<li><p>static和const可以同时修饰成员函数吗?</p>
-<p>答：不可以。C++编译器在实现const的成员函数的时候为了确保该函数不能修改类的实例的状态，会在函数中添加一个隐式的参数const this*。但当一个成员为static的时候，该函数是没有this指针的。也就是说此时const的用法和static是冲突的。两者的语意是矛盾的。<strong>static的作用是表示该函数只作用在类型的静态变量上，与类的实例没有关系；而const的作用是确保函数不能修改类的实例的状态</strong>，与类型的静态变量没有关系。因此不能同时用它们。</p>
-</li>
-</ul>
-<h1 id="C-中this指针相关问题"><a href="#C-中this指针相关问题" class="headerlink" title="C++中this指针相关问题"></a>C++中this指针相关问题</h1><h2 id="This指针的来源"><a href="#This指针的来源" class="headerlink" title="This指针的来源"></a>This指针的来源</h2><p>通过转化成c语言好理解一点。早期还没有针对特定c++的编译器，因此编译c++的时候都先翻译成c语言，再进行编译。</p>
-<p>对于class结构来说，c语言中与之对应的就是结构体。</p>
-<p>类中的成员变量可以翻译成结构体域中的变量，但是结构体中没有成员函数这个概念，因此成员函数就翻译成为全局函数。</p>
-<p>那么如果函数内部想使用成员数据，可以使用该对象指针的方式，指向成员变量。</p>
-<h2 id="其作用就是指向非静态成员函数所作用的对象。"><a href="#其作用就是指向非静态成员函数所作用的对象。" class="headerlink" title="其作用就是指向非静态成员函数所作用的对象。"></a><strong>其作用就是指向非静态成员函数所作用的对象。</strong></h2><ol>
-<li><code>this</code> 指针是一个隐含于每一个非静态成员函数中的特殊指针。它指向<strong>调用该非静态成员函数的那个对象。</strong></li>
-<li>当对一个对象调用成员函数时，编译程序先将对象的地址赋给 <code>this</code> 指针，然后调用成员函数，每次成员函数存取数据成员时，都隐式使用 <code>this</code> 指针。</li>
-<li><code>this</code> 并不是一个常规变量，而是个右值，所以不能取得 <code>this</code> 的地址（不能 <code>&amp;this</code>）。</li>
-</ol>
-<h2 id="this指针是什么时候创建的？"><a href="#this指针是什么时候创建的？" class="headerlink" title="this指针是什么时候创建的？"></a>this指针是什么时候创建的？</h2><p>this在成员函数的开始执行前构造，在成员的执行结束后清除。</p>
-<p>但是如果class里面没有方法的话，它们是没有构造函数的，只能当做C的struct使用。采用TYPE xx的方式定义的话，在栈里分配内存，这时候this指针的值就是这块内存的地址。采用new的方式创建对象的话，在堆里分配内存，new操作符通过eax（累加寄存器）返回分配的地址，然后设置给指针变量。之后去调用构造函数（如果有构造函数的话），这时将这个内存块的地址传给ecx</p>
-<h2 id="this指针存放在何处？堆、栈、全局变量，还是其他？"><a href="#this指针存放在何处？堆、栈、全局变量，还是其他？" class="headerlink" title="this指针存放在何处？堆、栈、全局变量，还是其他？"></a>this指针存放在何处？堆、栈、全局变量，还是其他？</h2><p>this指针会因编译器不同而有不同的放置位置。可能是栈，也可能是寄存器，甚至全局变量。在汇编级别里面，一个值只会以3种形式出现：立即数、寄存器值和内存变量值。不是存放在寄存器就是存放在内存中，它们并不是和高级语言变量对应的。</p>
-<h2 id="如果我们知道一个对象this指针的位置，可以直接使用吗？"><a href="#如果我们知道一个对象this指针的位置，可以直接使用吗？" class="headerlink" title="如果我们知道一个对象this指针的位置，可以直接使用吗？"></a>如果我们知道一个对象this指针的位置，可以直接使用吗？</h2><p><strong>this指针只有在成员函数中才有定义。</strong></p>
-<p>因此，你获得一个对象后，也不能通过对象使用this指针。所以，我们无法知道一个对象的this指针的位置（只有在成员函数里才有this指针的位置）。当然，在成员函数里，你是可以知道this指针的位置的（可以通过&amp;this获得），也可以直接使用它。</p>
-<h2 id="在成员函数中调用delete-this会出现什么问题？"><a href="#在成员函数中调用delete-this会出现什么问题？" class="headerlink" title="在成员函数中调用delete this会出现什么问题？"></a>在成员函数中调用delete this会出现什么问题？</h2><p>在类对象的内存空间中，只有数据成员和虚函数表指针，类的成员函数单独放在代码段中。在调用成员函数时，隐含传递一个this指针，让成员函数知道当前是哪个对象在调用它。</p>
-<p>当调用delete this时，类对象的内存空间被释放。在delete this之后进行的其他任何函数调用，只要不涉及到this指针的内容，都能够正常运行。一旦涉及到this指针，如操作数据成员，调用虚函数等，就会出现不可预期的问题。</p>
-<h2 id="如果在类的析构函数中调用delete-this，会发生什么？"><a href="#如果在类的析构函数中调用delete-this，会发生什么？" class="headerlink" title="如果在类的析构函数中调用delete this，会发生什么？"></a>如果在类的析构函数中调用delete this，会发生什么？</h2><p>会导致堆栈溢出。原因很简单，delete的本质是“为将被释放的内存调用一个或多个析构函数，然后，释放内存”。显然，delete this会去调用本对象的析构函数，而析构函数中又调用delete this，形成无限递归，造成堆栈溢出，系统崩溃。</p>
-<h1 id="C-的静态链接和动态链接"><a href="#C-的静态链接和动态链接" class="headerlink" title="C++的静态链接和动态链接"></a>C++的静态链接和动态链接</h1><h2 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h2><p>在程序的链接阶段，将上一阶段生成的test.o文件与库函数合并生成可执行文件。</p>
-<p>这样做好处就是以后的代码和库函数无关了，可以随便移植。</p>
-<p>坏处是①静态链接的文件体积太大。②如果库函数更新的话需要重新链接。③在内存中会存在多分拷贝，因为每个程序都会存在一份库函数，如下图：</p>
-<p>静态库的生成使用如下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ar <span class="token parameter variable">-crv</span> libadd.a add.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>在数组不变的情况下，前缀和能够很方便的获得区间和，但是如果数组元素被修改，一般的前缀和会有大量的元素需要修改，非常费时，这里介绍一个能够应对这一情况的数据结构——树状数组</p>
+<h2 id="树形数组介绍"><a href="#树形数组介绍" class="headerlink" title="树形数组介绍"></a>树形数组介绍</h2><p>先记住最精髓的一句话：树状数组本质是二进制规律的应用</p>
+<p>假设现在有一个线性数组A,为了便于理解A的范围从1–8。 并构造一个数组C，范围也是1–8</p>
+<p>接下来将C构造为那么一个树结构：</p>
+<img src="https://pic.leetcode-cn.com/1649059671-iOnJHj-image.png" alt="image.png" style="zoom:50%;">
+
+<p><img src="https://pic.leetcode-cn.com/1649060006-WmHOVH-image.png" alt="image.png"></p>
+<p>观察这棵树结构，可以发现叶子结点的二进制的最后一位为1。接下来的结点为倒数第二位为1….</p>
+<p>现在，我们对这棵树结构赋予其涵义：</p>
+<p>二进制</p>
+<pre class="line-numbers language-none"><code class="language-none">1=(001)      C[1]=A[1];
+2=(010)      C[2]=A[1]+A[2];
+3=(011)      C[3]=A[3];
+4=(100)      C[4]=A[1]+A[2]+A[3]+A[4];
+5=(101)      C[5]=A[5];
+6=(110)      C[6]=A[5]+A[6];
+7=(111)      C[7]=A[7];
+8=(1000)     C[8]=A[1]+A[2]+A[3]+A[4]+A[5]+A[6]+A[7]+A[8];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="307-区域和检索-数组可修改-力扣（LeetCode）"><a href="#307-区域和检索-数组可修改-力扣（LeetCode）" class="headerlink" title="307. 区域和检索 - 数组可修改 - 力扣（LeetCode）"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-mutable/solutions/1394254/by-fenjue-ewfb/">307. 区域和检索 - 数组可修改 - 力扣（LeetCode）</a></h2><p>从上面的图可以看出来，构建树状数组的思路如下：</p>
+<p>①将数组元素放在叶子节点——用二分法</p>
+<p>②自下而上地求取非叶子节点的值，所以要用到后序遍历</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">NumArray</span> <span class="token punctuation">{</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> segmentTree<span class="token punctuation">;</span><span class="token comment">//用数组代表树</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">int</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> e<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s <span class="token operator">==</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//s==e说明到了叶子节点</span>
+            segmentTree<span class="token punctuation">[</span>node<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//注意这里左边是node</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> m <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span>e <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token comment">//二分法——分治建树</span>
+        <span class="token function">build</span><span class="token punctuation">(</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> m<span class="token punctuation">,</span> nums<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//构建左叶子节点，递归构建</span>
+        <span class="token function">build</span><span class="token punctuation">(</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> nums<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//构建右叶子节点</span>
+        segmentTree<span class="token punctuation">[</span>node<span class="token punctuation">]</span> <span class="token operator">=</span> segmentTree<span class="token punctuation">[</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> segmentTree<span class="token punctuation">[</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">,</span> <span class="token keyword">int</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//改变某节点的值</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s <span class="token operator">==</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//s==e说明到了叶子节点</span>
+            segmentTree<span class="token punctuation">[</span>node<span class="token punctuation">]</span> <span class="token operator">=</span> val<span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> m <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span>e <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;=</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">change</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> val<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//二分法查找这个节点</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">change</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> val<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        segmentTree<span class="token punctuation">[</span>node<span class="token punctuation">]</span> <span class="token operator">=</span> segmentTree<span class="token punctuation">[</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> segmentTree<span class="token punctuation">[</span>node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//查找后序遍历，从下往上更新节点</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">range</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">,</span> <span class="token keyword">int</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> s <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> segmentTree<span class="token punctuation">[</span>node<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> m <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span>e <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;=</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">range</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">&gt;</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">range</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">range</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> m<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> m<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">range</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">,</span> node <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">NumArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">n</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">segmentTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//这里有个细节，树状数组的大小是segmentTree的四倍，因为树状数组默认是满二叉树，所以可能会多一倍的空节点</span>
+        <span class="token function">build</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> nums<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">change</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> val<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">sumRange</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">range</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-
-<h2 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h2><p>显然程序员都比较懒，比如我只用一个功能，我把所有静态库链接进去肯定是不科学的，而且每次库省级都要重新编译链接</p>
-<p>动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入。不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例，规避了空间浪费问题。动态库在程序运行是才被载入，也解决了静态库对程序的更新、部署和发布页会带来麻烦。用户只需要更新动态库即可，增量更新。</p>
-<p>我们把静态链接与动态链接做一个这样子的比喻：把链接过程看做我们平时学习时做笔记的过程。我们平时学习时准备一本笔记本专门记录我们的学习笔记，比如在某本书的某一页上看到一个很好很有用的知识，这时候我们有两种方法记录在我们的笔记本上。一种是直接把那一页的内容全部抄写一遍到笔记本上（静态链接）；另一种是我们在笔记本上做个简单的记录（动态链接），比如写上：xxx知识点在《xxx》的xxx页。从这两种方法中我们可以很清楚地知道两种方式的特点。第一种方式的优点就是我们在复习的时候就很方便，不用翻阅其它书籍了，但是缺点也很明显，就是占用笔记本的空间很多，这种方法很快就把我们的笔记本给写满了。第二种方式的优点就是很省空间，缺点就是每当我们复习的时候，手头上必须备着相关的参考书籍，比如我们去教室复习的时候，就得背着一大摞书去复习，这样我们复习的效率可能就没有那么高了。</p>
-<h2 id="动态编译和静态编译"><a href="#动态编译和静态编译" class="headerlink" title="动态编译和静态编译"></a>动态编译和静态编译</h2><p>静态编译，编译器在编译可执行文件时，把需要用到的对应链接库中的部分提出来，连接到可执行文件中，使可执行文件在运行时不需要依赖于动态链接库。</p>
-<p>动态编译，可执行文件需要附带一个动态链接库，在执行的时候，需要调用其对应动态链接库的命令。优点是缩小了执行文件本身的体积，另一方面加快了编译速度，节省系统资源。缺点是需要附着一个动态链接库，当这个库很大的时候很麻烦；其次是如果该环境没有安装对应的库，动态编译的可执行文件不能运行。</p>
-<h2 id="动态联编和静态联编"><a href="#动态联编和静态联编" class="headerlink" title="动态联编和静态联编"></a>动态联编和静态联编</h2><p>在c++中联编指的是计算机程序不同部分彼此关联起来的过程。</p>
-<p>静态联编指联编工作在编译期完成，这种联编过程是在程序运行之前完成的，又叫做早期联编。如果要实现静态联编，就必须在编译阶段确定程序中的操作调用与执行该操作代码的关系。静态联编对函数的选择是基于执行对象的指针或引用的类型，优点是效率高，但灵活性太差。</p>
-<p>动态联编指的是程序运行的时候动态的进行。实际上是虚函数的实现过程，又叫做晚期联编。动态联编对成员函数的选择是基于对象类型的，针对不同对象类型做出不同编译结果。</p>
-<p>c++一般情况下的联编是静态联编，当涉及到虚函数的时候就会使用动态联编。</p>
-<h1 id="迭代器的底层机制和失效的问题"><a href="#迭代器的底层机制和失效的问题" class="headerlink" title="迭代器的底层机制和失效的问题)"></a>迭代器的底层机制和失效的问题)</h1><h2 id="迭代器失效的定义：对容器的操作影响了元素的存放位置，称为迭代器失效。"><a href="#迭代器失效的定义：对容器的操作影响了元素的存放位置，称为迭代器失效。" class="headerlink" title="迭代器失效的定义：对容器的操作影响了元素的存放位置，称为迭代器失效。"></a><strong>迭代器失效的定义：对容器的操作影响了元素的存放位置，称为迭代器失效。</strong></h2><p>失效情况分为三种：</p>
-<ol>
-<li>当容器调用<code>erase()</code>方法后，当前位置到容器末尾元素的所有迭代器全部失效。</li>
-<li>当容器调用<code>insert()</code>方法后，当前位置到容器末尾元素的所有迭代器全部失效。</li>
-<li>如果容器扩容，在其他地方重新又开辟了一块内存。原来容器底层的内存上所保存的迭代器全都失效了。</li>
-</ol>
-<p>通过迭代器可以在不了解容器内部原理的情况下遍历容器</p>
-<p>它的底层实现包含两个重要的部分：萃取技术和模板偏特化。</p>
-<ul>
-<li><p>萃取技术</p>
-<p>萃取技术可以进行类型推导，根据迭代器的不同类型处理不同流程。例如vector的迭代器类型为随机访问迭代器，list为双向迭代器</p>
-</li>
-<li><p>模板偏特化</p>
-<p>比较深澳</p>
-</li>
-<li><p>迭代器的类型</p>
-<ol>
-<li>输入迭代器。从容器中读取元素。输入迭代器只能一次读入一个元素向前移动</li>
-<li>输出迭代器。向容器中写入元素。输出迭代器只能一次一个元素向前移动。</li>
-<li>正向迭代器。组合输入迭代器和输出迭代器的功能，并保留在容器中的位置</li>
-<li>双向迭代器。组合正向迭代器和逆向迭代器的功能</li>
-<li>随机访问迭代器。组合双向迭代器的功能与直接访问容器中任何元素的功能，即可向前向后跳过任意个元素</li>
-</ol>
-</li>
-</ul>
-<h2 id="序列式容器失效"><a href="#序列式容器失效" class="headerlink" title="序列式容器失效"></a><strong>序列式容器失效</strong></h2><p><strong>失效原因：</strong>因为 vetor、deque 使用了连续分配的内存，<code>erase</code>操作删除一个元素导致后面所有的元素都会向前移动一个位置，这些元素的地址发生了变化，所以当前位置到容器末尾元素的所有迭代器全部失效。</p>
-<p><strong>解决办法：</strong>由于<code>erase</code>可以返回下一个有效的iterator，因此<code>q.earse(it)</code>不行，但是<code>it=q.erase(it)</code>可以</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">int main() {
-	vector&lt;int&gt; q{ 1,2,3,4,5,6 };
-	// 在这里想把大于2的元素都删除
-	for (auto it = q.begin(); it != q.end(); it++) {
-		if (*it &gt; 2)
-			q.erase(it); // 这里就会发生迭代器失效
-	}
-	// 打印结果
-	for (auto it = q.begin(); it != q.end(); it++) {
-		cout &lt;&lt; *it &lt;&lt; " ";
-	}
-	cout &lt;&lt; endl;
-	return 0;
-}
-
-//解决办法
-for(auto it=q.begin();it!=q.end();)
-{
-    if(*it&gt;2)
-    {
-    	it=q.erase(it); // 这里会返回指向下一个元素的迭代器，因此不需要再自加了
-    }
-    else
-    {
-    	it++;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="链表式容器失效和关联式容器失效"><a href="#链表式容器失效和关联式容器失效" class="headerlink" title="链表式容器失效和关联式容器失效"></a><strong>链表式容器失效</strong>和<strong>关联式容器失效</strong></h2><p><strong>失效原因：</strong>链表的插入和删除节点不会对其他节点造成影响，因此只会使得当前的iterator失效</p>
-<p><strong>解决办法：</strong>利用<code>erase</code>可以返回下一个有效的iteratord的特性，或者直接iterator++</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">//方法1
-for (iter = cont.begin(); it != cont.end();)
-{
-   (*iter)-&gt;doSomething();
-   if (shouldDelete(*iter))
-      cont.erase(iter++);
-   else
-      iter++;
-}
-//方法2
-for (iter = cont.begin(); iter != cont.end();)
-{
-   (*it)-&gt;doSomething();
-   if (shouldDelete(*iter))
-      iter = cont.erase(iter);  //erase删除元素，返回下一个迭代器
-   else
-      ++iter;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -609,7 +508,7 @@ for (iter = cont.begin(); iter != cont.end();)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrAriten.github.io/2023/11/10/%E5%85%AB%E8%82%A1/C++%E4%B8%AD%E5%B8%B8%E5%BF%98%E7%9A%84%E4%B8%9C%E8%A5%BF/">https://MrAriten.github.io/2023/11/10/%E5%85%AB%E8%82%A1/C++%E4%B8%AD%E5%B8%B8%E5%BF%98%E7%9A%84%E4%B8%9C%E8%A5%BF/</a>
+                    <a href="https://MrAriten.github.io/2023/11/12/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C2%E2%80%94%E2%80%94%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">https://MrAriten.github.io/2023/11/12/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C2%E2%80%94%E2%80%94%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -649,6 +548,18 @@ for (iter = cont.begin(); iter != cont.end();)
                             
                                 <a href="/tags/C/">
                                     <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E7%BB%84/">
+                                    <span class="chip bg-color">数组</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">
+                                    <span class="chip bg-color">前缀和</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                    <span class="chip bg-color">二叉树</span>
                                 </a>
                             
                         </div>
@@ -695,24 +606,72 @@ for (iter = cont.begin(); iter != cont.end();)
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/11/12/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E2%80%94%E2%80%94%E5%BD%92%E5%B9%B6%E9%93%BE%E8%A1%A8%E5%92%8C%E6%95%B0%E7%BB%84/">
+                <a href="/2023/11/12/%E5%85%AB%E8%82%A1/%E5%A0%86%E6%93%8D%E4%BD%9C%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/coding.jpg" class="responsive-img" alt="分治——归并链表和数组">
+                        <img src="/medias/images/book.jpg" class="responsive-img" alt="堆操作的时间复杂度">
                         
-                        <span class="card-title">分治——归并链表和数组</span>
+                        <span class="card-title">堆操作的时间复杂度</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            常见的数据结构的归并写法
+                            简单说说堆相关操作的时间复杂度到底是多少
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="far fa-clock fa-fw icon-date"></i>2023-11-12
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" class="post-category">
+                                    知识整理
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%A0%86/">
+                        <span class="chip bg-color">堆</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/11/12/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/coding.jpg" class="responsive-img" alt="前缀和——入门到精通">
+                        
+                        <span class="card-title">前缀和——入门到精通</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我自己总结的前缀和相关题目
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -732,72 +691,16 @@ for (iter = cont.begin(); iter != cont.end();)
                         <span class="chip bg-color">C++</span>
                     </a>
                     
-                    <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                        <span class="chip bg-color">链表</span>
-                    </a>
-                    
                     <a href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="chip bg-color">数组</span>
                     </a>
                     
-                    <a href="/tags/%E9%80%92%E5%BD%92/">
-                        <span class="chip bg-color">递归</span>
+                    <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">
+                        <span class="chip bg-color">前缀和</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/11/10/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/Clion%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/images/question.jpg" class="responsive-img" alt="Clion远程连接MySQL">
-                        
-                        <span class="card-title">Clion远程连接MySQL</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            一些遇到的问题
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" class="post-category">
-                                    疑难杂症
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Clion/">
-                        <span class="chip bg-color">Clion</span>
-                    </a>
-                    
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="chip bg-color">哈希表</span>
                     </a>
                     
                 </div>
