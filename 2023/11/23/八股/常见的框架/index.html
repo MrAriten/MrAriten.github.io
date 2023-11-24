@@ -1,0 +1,1431 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="常用的框架, MrAriten的博客">
+    <meta name="description" content="NginX，Skynet，Redis，Docker等">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>常用的框架 | MrAriten的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">MrAriten的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">MrAriten的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/MrAriten" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/MrAriten" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/book.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">常用的框架</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" class="post-category">
+                                知识整理
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-11-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-11-24
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    37 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h1><p>Apache服务器是一个开源的、跨平台的Web服务器软件。它是最流行的Web服务器之一，广泛用于互联网上的许多网站和应用程序。Apache服务器的全名是”Apache HTTP服务器”，通常被简称为”Apache”。</p>
+<p>以下是一些关于Apache服务器的重要信息：</p>
+<ol>
+<li><p><strong>开源性质</strong>：Apache服务器是开源软件，这意味着任何人都可以查看其源代码、修改它以适应自己的需求，并免费使用它。</p>
+</li>
+<li><p><strong>跨平台性</strong>：Apache服务器可以在多种操作系统上运行，包括Linux、Unix、Windows和其他操作系统。</p>
+</li>
+<li><p><strong>HTTP服务器</strong>：Apache是一个HTTP服务器，它的主要功能是接收来自客户端（通常是Web浏览器）的HTTP请求，然后向客户端发送相应的Web页面或其他资源，如HTML文件、图像、样式表和JavaScript文件。</p>
+</li>
+<li><p><strong>模块化架构</strong>：Apache采用了模块化的架构，允许用户通过加载不同的模块来扩展其功能。这使得Apache非常灵活，可以满足各种不同类型的Web服务器需求。</p>
+</li>
+<li><p><strong>安全性</strong>：Apache服务器具有强大的安全性特性，可以配置以保护网站免受各种网络攻击和威胁。管理员可以配置访问控制、SSL加密和其他安全功能。</p>
+</li>
+<li><p><strong>性能优化</strong>：Apache服务器可以通过配置和优化来提高性能，以处理大量的并发请求，这对于高流量的网站非常重要。</p>
+</li>
+<li><p><strong>支持扩展</strong>：Apache支持多种编程语言和技术，如PHP、Python、Perl等，使开发人员能够创建动态Web应用程序。</p>
+</li>
+<li><p><strong>虚拟主机支持</strong>：Apache允许在单个服务器上托管多个网站，每个网站都可以拥有自己的域名和配置，这称为虚拟主机。</p>
+</li>
+</ol>
+<p>总之，Apache服务器是一个功能强大、稳定可靠的Web服务器，适用于各种规模的Web应用程序和网站。它的开源性质和广泛的社区支持使其成为互联网上最受欢迎的Web服务器之一。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011598529/article/details/48137791">Apache和Tomcat_tomcat和django性能_一棵棵大树的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.54benniao.com/a/573.html">Apache服务器安装及配置教程_54笨鸟 (54benniao.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010297957/article/details/50751656?spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-50751656-blog-121460636.235%5Ev38%5Epc_relevant_anti_vip_base&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-50751656-blog-121460636.235%5Ev38%5Epc_relevant_anti_vip_base&amp;utm_relevant_index=13">Linux 下Apache(httpd) 安装、配置_apache安装_有且仅有的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://httpd.apache.org/docs/2.4/getting-started.html">入门 - Apache HTTP 服务器版本 2.4</a></p>
+<p><a target="_blank" rel="noopener" href="https://httpd.apache.org/docs/2.4/configuring.html">配置文件 - Apache HTTP 服务器版本 2.4</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50816276/article/details/131882937?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-131882937-blog-129248989.235%5Ev38%5Epc_relevant_anti_vip_base&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-131882937-blog-129248989.235%5Ev38%5Epc_relevant_anti_vip_base&amp;utm_relevant_index=5">Apache搭建网站_apache创建网站_逸轩搞运维的博客-CSDN博客</a></p>
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><h2 id="chatgpt介绍"><a href="#chatgpt介绍" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>Apache Tomcat，通常简称为Tomcat，是一个开源的Java Servlet容器，用于实现Java Servlet和JavaServer Pages（JSP）规范。它是由Apache软件基金会维护和开发的，是一个轻量级、高性能的Web服务器和应用服务器。（可以方便地实现java web）</p>
+<p>以下是Tomcat的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>Servlet容器</strong>：Tomcat是一个用于运行Java Servlet的容器。Servlets是Java编写的服务器端应用程序，用于处理Web请求和生成动态Web内容。</p>
+</li>
+<li><p><strong>JSP支持</strong>：Tomcat还支持JavaServer Pages（JSP），允许开发人员创建使用Java代码嵌入HTML的Web页面。JSP页面在Tomcat中被编译成Servlets并在服务器上运行。</p>
+</li>
+<li><p><strong>Web应用程序容器</strong>：Tomcat不仅可以运行Servlets和JSP，还可以部署和运行Java EE（Enterprise Edition）Web应用程序。这意味着它可以用于托管复杂的企业级Web应用程序。</p>
+</li>
+<li><p><strong>轻量级和快速启动</strong>：Tomcat被设计成一个相对轻量级的服务器，因此它的启动速度很快。这使得它成为开发和测试Java Web应用程序的理想选择。</p>
+</li>
+<li><p><strong>跨平台</strong>：Tomcat是跨平台的，可以在多种操作系统上运行，包括Windows、Linux、macOS等。</p>
+</li>
+<li><p><strong>模块化和可扩展性</strong>：Tomcat具有模块化的架构，允许用户根据需要添加或删除功能模块，以满足特定的应用程序要求。这种可扩展性使得Tomcat适用于各种不同的应用场景。</p>
+</li>
+<li><p><strong>开源和免费</strong>：Tomcat是开源的，可以免费使用和分发，这使得它成为一个广泛采用的选择。</p>
+</li>
+</ol>
+<p>总之，Tomcat是一个用于运行Java Web应用程序的开源Servlet容器和Web服务器。它在Java开发社区中非常流行，被广泛用于构建和部署Java Web应用程序，包括网站、Web服务和企业级应用程序。</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142083434">Tomcat服务器入门详细教程 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58730471/article/details/128166565">Tomcat基础入门_tomcat入门_想要登顶的菜鸟的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35995514/article/details/131551361">Linux安装Tomcat详细教程（图文教程）_开着拖拉机回家的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43670802/article/details/104525937">War包是什么？？_war包是什么意思_程序员杰森的博客-CSDN博客</a></p>
+<p>[Java Web_百度百科 (baidu.com)](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java">https://baike.baidu.com/item/Java</a> Web/1611944?fr=ge_ala)</p>
+<h1 id="NginX"><a href="#NginX" class="headerlink" title="NginX"></a>NginX</h1><h2 id="chatgpt介绍-1"><a href="#chatgpt介绍-1" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>Nginx（发音为”engine-x”）是一个开源的、高性能的Web服务器和反向代理服务器。它最初由Igor Sysoev在2004年创建，并于2009年以开源软件的形式发布。Nginx的主要目标是处理高并发的网络连接，并提供快速、可靠、稳定的服务。</p>
+<p>Nginx的主要特点和用途包括：</p>
+<ol>
+<li><p>Web服务器：Nginx可以用作HTTP服务器，用于提供静态内容、动态内容以及处理HTTP请求和响应。它通常用于托管网站和Web应用程序。</p>
+</li>
+<li><p>反向代理服务器：Nginx可以用作反向代理服务器，将客户端请求转发给后端服务器，然后将响应返回给客户端。这有助于负载均衡、缓存和提高Web应用程序的性能和可用性。</p>
+</li>
+<li><p>负载均衡：Nginx可以分发客户端请求到多个后端服务器，从而均衡服务器负载，提高应用程序的可扩展性和可用性。</p>
+</li>
+<li><p>静态文件服务：Nginx非常擅长提供静态文件，如HTML、CSS、JavaScript和图像文件，它可以通过高效的文件处理和缓存来加速这些内容的传输。</p>
+</li>
+<li><p>SSL/TLS终结：Nginx可以用于终止SSL/TLS加密，从而减轻后端服务器的计算负载，同时提供安全的HTTPS连接。</p>
+</li>
+<li><p>HTTP缓存：Nginx支持缓存HTTP响应，以减少对后端服务器的请求，提高性能，并降低网络流量。</p>
+</li>
+</ol>
+<p>总之，Nginx是一个功能强大且高度可定制的服务器软件，广泛用于构建高性能、可伸缩和可靠的网络应用程序架构。它在许多互联网公司和网站上被广泛使用，是一个重要的基础设施组件。</p>
+<h2 id="资料-1"><a href="#资料-1" class="headerlink" title="资料"></a>资料</h2><p>入门：<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1353634800149213186">Nginx快速入门-KuangStudy-文章</a></p>
+<p>详细操作：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54065960/article/details/131455673">Nginx超详细入门教程_nginx教程_南下望极光的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51414096/article/details/125293932?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-125293932-blog-131455673.235%5Ev38%5Epc_relevant_anti_vip_base&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3">【nginx】教程，超级详细，简单易懂_nginx教程_小 源的博客-CSDN博客</a></p>
+<h1 id="Skynet"><a href="#Skynet" class="headerlink" title="Skynet"></a>Skynet</h1><h2 id="chatgpt"><a href="#chatgpt" class="headerlink" title="chatgpt"></a>chatgpt</h2><p>Skynet（天网）是一个开源的游戏服务器框架，它旨在为多人在线游戏（Massively Multiplayer Online Games，MMOG）和大规模并发应用程序提供高性能和可伸缩性。Skynet最初由Cloud Wu开发，并且在GitHub上作为开源项目进行维护。以下是Skynet游戏服务器框架的一些主要特点和介绍：</p>
+<ol>
+<li><p><strong>轻量级和高性能</strong>：Skynet被设计为一个轻量级框架，具有出色的性能。它专注于处理高并发的网络通信，可以在多核服务器上充分利用硬件资源。</p>
+</li>
+<li><p><strong>基于事件驱动</strong>：Skynet使用事件驱动的编程模型，这意味着它可以有效地处理大量的并发连接和请求，而不会阻塞主线程。</p>
+</li>
+<li><p><strong>分布式架构</strong>：Skynet支持分布式部署，可以将游戏服务器集群化，以应对大量玩家和复杂的游戏逻辑。这使得它适用于大型多人在线游戏。</p>
+</li>
+<li><p><strong>Lua脚本支持</strong>：Skynet使用Lua作为脚本语言，允许开发人员编写游戏逻辑和服务器端代码。Lua是一种轻量级、快速的脚本语言，非常适合游戏开发。</p>
+</li>
+<li><p><strong>热更新</strong>：Skynet支持热更新，这意味着您可以在不停止服务器的情况下更新游戏逻辑和脚本，这对于维护在线游戏非常有用。</p>
+</li>
+<li><p><strong>模块化架构</strong>：Skynet采用模块化的设计，允许您轻松添加或删除功能模块，以满足特定游戏的需求。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：Skynet是一个开源项目，拥有活跃的社区，开发人员可以共享经验、解决问题和贡献代码。</p>
+</li>
+</ol>
+<p>需要注意的是，Skynet虽然主要用于游戏服务器开发，但它也可以用于构建其他类型的大规模并发应用程序，如实时通信应用、社交网络平台等。它的设计重点是高性能、可伸缩性和易于开发，使得它成为处理大规模并发需求的一种强大工具。但是，它也需要一定的学习曲线，因此开发人员需要熟悉Lua编程和分布式系统概念才能充分利用Skynet框架。</p>
+<h2 id="资料-2"><a href="#资料-2" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/lua/7570719">lua_百度百科 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38125309">Lua基础知识讲解 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet/wiki">Home · cloudwu/skynet Wiki (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/">skynet源码赏析 (manistein.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet_sample">cloudwu/skynet_sample: A sample for skynet (github.com)</a></p>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="chatgpt介绍-2"><a href="#chatgpt介绍-2" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>Redis（Remote Dictionary Server）是一个开源的内存数据库系统，通常被称为数据结构服务器。它是一种高性能的键值存储系统，可以用于缓存、消息队列、会话存储和各种数据结构操作。Redis最初由Salvatore Sanfilippo创建，并由Redis Labs维护，已经成为许多应用程序和系统的重要组成部分。</p>
+<p>以下是Redis的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>内存存储</strong>：Redis主要将数据存储在内存中，因此访问数据非常快速。这使得它非常适合用作缓存层，用于存储频繁访问的数据，以减轻后端数据库的负载。</p>
+</li>
+<li><p><strong>键值存储</strong>：Redis是一个键值存储系统，其中每个键都与一个值相关联。这些值可以是各种数据结构，包括字符串、列表、集合、散列表、有序集合等。</p>
+</li>
+<li><p><strong>数据结构操作</strong>：Redis支持丰富的数据结构操作，如对列表的推送和弹出、对集合的添加和删除、对散列表的插入和获取等。这使得Redis成为一种灵活的工具，可以应对各种不同的用例。</p>
+</li>
+<li><p><strong>持久性</strong>：虽然Redis主要将数据存储在内存中，但它可以配置为定期将数据快照到磁盘，以便在服务器重启时恢复数据。这提供了一定程度的持久性。</p>
+</li>
+<li><p><strong>发布/订阅</strong>：Redis支持发布/订阅模式，允许客户端订阅特定频道的消息，以实现实时消息传递、事件处理等功能。</p>
+</li>
+<li><p><strong>集群和复制</strong>：Redis支持集群配置，可以将数据分布在多个节点上，以提高可用性和扩展性。它还支持主从复制，允许将数据复制到多个从节点以进行备份和负载均衡。</p>
+</li>
+<li><p><strong>多语言支持</strong>：Redis客户端库可用于多种编程语言，包括Python、Java、Node.js、Ruby等，因此它可以轻松集成到各种不同的应用程序中。</p>
+</li>
+<li><p><strong>开源和活跃社区</strong>：Redis是一个开源项目，拥有庞大的用户和开发者社区，提供了广泛的文档和支持。</p>
+</li>
+</ol>
+<p>Redis在许多应用程序中用于高速数据存储、缓存、实时分析和队列管理等多种用途。它的高性能和灵活性使得它成为构建快速、可伸缩应用程序的有力工具。</p>
+<h2 id="资料-3"><a href="#资料-3" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/9794.html">Redis介绍（非常详细） (biancheng.net)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiaolincoding.com/redis/base/redis_interview.html#%E4%BB%80%E4%B9%88%E6%98%AF-redis">Redis 常见面试题 | 小林coding (xiaolincoding.com)</a></p>
+<h1 id="RPC协议"><a href="#RPC协议" class="headerlink" title="RPC协议"></a>RPC协议</h1><h2 id="chatgpt介绍-3"><a href="#chatgpt介绍-3" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>RPC（Remote Procedure Call，远程过程调用）协议是一种用于在分布式系统中进行远程通信的协议。它允许一个进程（或计算机）调用另一个进程上的函数或方法，就像调用本地函数一样，而无需开发人员处理底层的网络通信细节。RPC协议通常用于构建分布式系统和微服务架构中的组件通信。</p>
+<p>以下是RPC协议的一些关键概念和特点：</p>
+<ol>
+<li><p><strong>远程调用</strong>：RPC允许一个进程调用另一个进程上的函数或方法，就像在本地调用一样。这使得分布式系统中的不同组件能够协同工作。</p>
+</li>
+<li><p><strong>语言中立性</strong>：RPC协议通常是语言中立的，这意味着可以使用不同编程语言实现不同部分的分布式系统，它们之间仍然可以进行远程调用。</p>
+</li>
+<li><p><strong>序列化</strong>：在RPC中，参数和返回值通常需要序列化（或称为编码）成一种可以在网络上传输的格式，例如JSON或二进制格式。接收方需要将数据反序列化（或称为解码）以还原原始数据。</p>
+</li>
+<li><p><strong>协议和传输</strong>：RPC可以在不同的传输协议上运行，例如HTTP、TCP、UDP等。具体的协议选择取决于应用程序的需求。</p>
+</li>
+<li><p><strong>同步和异步</strong>：RPC可以是同步的（即调用方等待远程调用的响应）或异步的（即调用方继续执行其他任务，而不必等待响应）。这取决于应用程序的设计和性能要求。</p>
+</li>
+<li><p><strong>远程异常处理</strong>：RPC协议通常包括处理远程异常的机制，以便处理远程调用可能引发的错误或异常情况。</p>
+</li>
+<li><p><strong>服务注册和发现</strong>：在大规模分布式系统中，通常需要服务注册和发现机制，以便客户端可以找到要调用的远程服务。</p>
+</li>
+<li><p><strong>安全性</strong>：由于涉及跨网络的通信，RPC通常需要考虑安全性，包括身份验证、授权和数据加密。</p>
+</li>
+</ol>
+<p>一些常见的RPC协议和框架包括 gRPC、Apache Thrift、Apache Avro、JSON-RPC 等。这些协议和框架提供了不同的功能和性能特性，可以根据具体的项目需求进行选择。</p>
+<p>总之，RPC协议是一种用于实现分布式系统中远程通信的协议，它使得不同部分的分布式应用程序可以相互调用，从而构建了更复杂的分布式系统。</p>
+<h2 id="资料-4"><a href="#资料-4" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://www.coonote.com/note/rpc-intro.html">RPC简介-菜鸟笔记 (coonote.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/187560185">RPC是什么，看完你就知道了 - 知乎 (zhihu.com)</a></p>
+<h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><h2 id="Chatgpt介绍"><a href="#Chatgpt介绍" class="headerlink" title="Chatgpt介绍"></a>Chatgpt介绍</h2><p>MongoDB是一个开源的文档型数据库管理系统，通常被称为NoSQL数据库。MongoDB的设计目标是为了存储和处理大量的非结构化或半结构化数据，例如JSON格式的文档数据。它是一种非关系型数据库，与传统的关系型数据库（如MySQL、Oracle）不同，它不需要固定的表结构，可以更灵活地存储和查询数据。</p>
+<p>以下是MongoDB的一些关键特点和概念：</p>
+<ol>
+<li><p><strong>文档存储</strong>：MongoDB使用文档（Documents）来表示数据记录。文档是一组键值对的集合，可以包含嵌套的文档和数组。这种灵活的数据模型使MongoDB适用于各种不同类型的数据。</p>
+</li>
+<li><p><strong>无模式</strong>：MongoDB是一个无模式数据库，这意味着每个文档可以具有不同的结构，不需要预先定义固定的表结构。这使得它适用于处理变化和复杂的数据。</p>
+</li>
+<li><p><strong>高性能</strong>：MongoDB被设计为高性能的数据库系统，支持快速的读写操作。它使用内存映射文件来提供快速的数据访问，适合于大型数据集。</p>
+</li>
+<li><p><strong>分布式存储</strong>：MongoDB支持分布式存储，可以横向扩展以处理大量的数据和高并发请求。它支持数据分片，允许将数据分散存储在多个服务器上。</p>
+</li>
+<li><p><strong>丰富的查询语言</strong>：MongoDB提供丰富的查询功能，包括复杂的条件查询、范围查询、文本搜索等。它还支持地理空间查询，适用于地理信息系统（GIS）应用。</p>
+</li>
+<li><p><strong>索引支持</strong>：MongoDB支持多种类型的索引，可以加速查询操作。开发人员可以为数据集合创建索引以提高查询性能。</p>
+</li>
+<li><p><strong>复制和容错</strong>：MongoDB支持数据复制，可以创建主从复制集群，以提高数据的可用性和容错性。如果主节点失败，系统可以自动切换到备用节点。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：MongoDB是一个开源项目，拥有活跃的社区，提供广泛的文档和支持资源。</p>
+</li>
+</ol>
+<p>MongoDB通常用于各种应用程序，包括Web应用程序、大数据分析、日志存储、内容管理系统等，特别是对于需要处理半结构化数据的应用程序。它的灵活性、性能和可扩展性使得它成为了一个受欢迎的数据库选择。</p>
+<h2 id="资料-5"><a href="#资料-5" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/mongodb/60411">mongodb_百度百科 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/627120917">MongoDB简介 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/faq/535466.html">Redis和MongoDB的区别与使用场景-Redis-PHP中文网</a></p>
+<h1 id="kafka"><a href="#kafka" class="headerlink" title="kafka"></a>kafka</h1><h2 id="Chatgpt介绍-1"><a href="#Chatgpt介绍-1" class="headerlink" title="Chatgpt介绍"></a>Chatgpt介绍</h2><p>Kafka（发音为卡夫卡）是一个开源的流数据平台和消息系统，最初由LinkedIn开发，并在后来成为Apache软件基金会的顶级项目。Kafka旨在处理高吞吐量、低延迟的数据流，并为各种应用程序提供实时数据传输和处理能力。</p>
+<p>以下是Kafka的一些关键特点和概念：</p>
+<ol>
+<li><p><strong>消息系统</strong>：Kafka是一个消息系统，用于将数据流从一个应用程序传输到另一个应用程序。它通过消息的方式实现了应用程序之间的异步通信。</p>
+</li>
+<li><p><strong>分布式和可扩展</strong>：Kafka是分布式的，允许数据流分布在多个服务器上。它可以轻松扩展以处理大量数据和高并发请求。</p>
+</li>
+<li><p><strong>发布/订阅模型</strong>：Kafka采用发布/订阅模型，其中数据生产者（发布者）将消息发布到主题（topic），而数据消费者（订阅者）订阅感兴趣的主题以接收消息。</p>
+</li>
+<li><p><strong>持久性</strong>：Kafka将消息持久化到磁盘，因此即使在消息被传递给消费者之后，它们仍然可以在磁盘上存储一段时间，以支持数据的持久化和回溯。</p>
+</li>
+<li><p><strong>日志</strong>：Kafka的消息存储方式类似于一个日志文件，每个主题的消息被附加到分区（partition）中，每个消息都有一个唯一的偏移量（offset）。</p>
+</li>
+<li><p><strong>水平扩展性</strong>：Kafka允许主题分为多个分区，这些分区可以分布在不同的服务器上。这使得Kafka能够水平扩展以提供高吞吐量。</p>
+</li>
+<li><p><strong>数据保留策略</strong>：Kafka允许配置数据保留策略，以决定消息在主题中的保留时间。一旦消息超过指定的保留时间或大小，它们可以被删除或归档。</p>
+</li>
+<li><p><strong>流处理</strong>：Kafka不仅仅是一个消息队列，还提供了流处理功能，允许应用程序进行实时数据处理、转换和分析。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：Kafka是一个开源项目，拥有庞大的用户和开发者社区，提供广泛的文档和支持资源。</p>
+</li>
+</ol>
+<p>Kafka通常用于构建实时数据管道、日志集中处理、事件驱动的架构、监控系统、数据湖和许多其他应用程序场景。它的高性能、可靠性和可扩展性使得它成为了处理大规模数据流的强大工具。</p>
+<h2 id="资料-6"><a href="#资料-6" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_64881460/article/details/123974331">kafka介绍_凤梨..的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mr4569870/article/details/126620483">Kafka介绍_kafka是干嘛的_青铜攻城狮的博客-CSDN博客</a></p>
+<h1 id="ZMQ"><a href="#ZMQ" class="headerlink" title="ZMQ"></a>ZMQ</h1><h2 id="Chatgpt介绍-2"><a href="#Chatgpt介绍-2" class="headerlink" title="Chatgpt介绍"></a>Chatgpt介绍</h2><p>ZeroMQ，通常简称为ZMQ，是一个开源的高性能消息传递库。它提供了一种简单而强大的方式来实现分布式和并发应用程序之间的异步通信，支持多种通信模式和传输协议。</p>
+<p>以下是ZeroMQ的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>轻量级和高性能</strong>：ZeroMQ被设计成一个轻量级库，具有出色的性能。它的消息传递机制非常高效，适用于需要快速通信的应用程序。</p>
+</li>
+<li><p><strong>分布式通信</strong>：ZeroMQ支持分布式系统中的通信，允许不同进程、线程或计算机之间进行异步消息传递。</p>
+</li>
+<li><p><strong>多种通信模式</strong>：ZeroMQ支持多种通信模式，包括请求/响应、发布/订阅、推送/拉取等。这些模式可以根据应用程序的需求进行选择。</p>
+</li>
+<li><p><strong>传输协议</strong>：ZeroMQ支持多种传输协议，包括TCP、IPC（进程间通信）、in-process等。这使得它非常灵活，可以在不同的环境中使用。</p>
+</li>
+<li><p><strong>异步和多线程支持</strong>：ZeroMQ允许应用程序进行异步通信，同时提供了多线程支持，可以轻松地在多线程应用程序中使用。</p>
+</li>
+<li><p><strong>消息队列</strong>：ZeroMQ可以用作消息队列，允许生产者将消息发送到队列，而消费者可以从队列中接收消息。这在构建事件驱动的系统和处理大量消息时非常有用。</p>
+</li>
+<li><p><strong>多语言支持</strong>：ZeroMQ的API可以用于多种编程语言，包括C、C++、Python、Java、JavaScript等，因此它适用于各种不同的应用程序和开发环境。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：ZeroMQ是一个开源项目，拥有活跃的社区，提供广泛的文档和支持资源。</p>
+</li>
+</ol>
+<p>ZeroMQ通常用于构建分布式系统、消息代理、实时通信应用程序、数据流处理和微服务架构中的组件通信。它的设计目标是提供一种简单而高效的方式来处理异步消息传递，减少了开发人员需要处理底层通信细节的工作，从而加速了应用程序的开发和维护。</p>
+<h1 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h1><h2 id="Chatgpt介绍-3"><a href="#Chatgpt介绍-3" class="headerlink" title="Chatgpt介绍"></a>Chatgpt介绍</h2><p>RabbitMQ是一个开源的消息队列系统，通常被称为消息中间件或消息代理。它提供了一种方法，允许不同的应用程序或组件之间通过消息传递来进行通信，从而实现解耦、异步和可扩展的架构。</p>
+<p>以下是RabbitMQ的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>消息队列</strong>：RabbitMQ是一个消息队列系统，用于将消息从一个应用程序发送到另一个应用程序。它可以用作不同组件之间的通信媒介，以实现解耦和松散耦合。</p>
+</li>
+<li><p><strong>消息模式</strong>：RabbitMQ支持多种消息传递模式，包括点对点（单个生产者和单个消费者）和发布/订阅（单个生产者和多个消费者）。</p>
+</li>
+<li><p><strong>可靠性</strong>：RabbitMQ提供了可靠性消息传递的机制，包括消息确认、持久化和重试。这意味着消息可以安全地传递，即使在发生错误或故障时也能够保持数据完整性。</p>
+</li>
+<li><p><strong>灵活性</strong>：RabbitMQ允许您自定义消息的路由和处理规则，以满足不同应用程序的需求。它支持消息过滤、路由规则和交换机类型的配置。</p>
+</li>
+<li><p><strong>多语言支持</strong>：RabbitMQ提供了多种客户端库，可以用于不同编程语言，包括Python、Java、JavaScript、Ruby等，因此它适用于各种不同的应用程序和开发环境。</p>
+</li>
+<li><p><strong>可扩展性</strong>：RabbitMQ是一个可扩展的消息队列系统，可以通过添加更多的消息代理节点来增加处理能力，以应对高负载和高并发需求。</p>
+</li>
+<li><p><strong>管理界面</strong>：RabbitMQ提供了一个Web管理界面，用于监控和管理消息队列的运行状态、配置和性能。</p>
+</li>
+<li><p><strong>持久化</strong>：RabbitMQ允许消息持久化，以确保即使在代理或服务器重启后，消息仍然可用。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：RabbitMQ是一个开源项目，拥有活跃的社区，提供广泛的文档和支持资源。</p>
+</li>
+</ol>
+<p>RabbitMQ通常用于构建分布式系统、微服务架构、事件驱动架构、任务队列、日志传递和实时数据处理等应用程序场景。它的可靠性、可扩展性和丰富的特性使得它成为了一个流行的消息队列系统选择。</p>
+<h1 id="这几个消息队列框架的区别"><a href="#这几个消息队列框架的区别" class="headerlink" title="这几个消息队列框架的区别"></a>这几个消息队列框架的区别</h1><p>RabbitMQ、Redis和ZeroMQ都可以用作消息队列，但它们在设计和用途上有一些重要的区别。以下是它们之间的主要区别：</p>
+<ol>
+<li><p><strong>消息持久性</strong>：</p>
+<ul>
+<li><p>RabbitMQ：RabbitMQ强调消息的持久性，它可以确保消息在传递过程中不会丢失，即使在代理或服务器重启后也能够保持数据完整性。</p>
+</li>
+<li><p>Redis：Redis通常将消息存储在内存中，虽然可以通过配置将消息持久化到磁盘，但不同于RabbitMQ的持久性。Redis更适合作为缓存和快速数据存储，而不是主要的消息队列系统。</p>
+</li>
+<li><p>ZeroMQ：ZeroMQ不具备持久性，它通常用于实时通信和消息传递，不会将消息存储到磁盘上。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>消息模型</strong>：</p>
+<ul>
+<li><p>RabbitMQ：RabbitMQ支持多种消息模型，包括点对点和发布/订阅。它可以用于构建复杂的消息路由和分发系统。</p>
+</li>
+<li><p>Redis：Redis支持发布/订阅模型，但它也可以用作点对点通信。Redis的主要特点是其速度和实时性。</p>
+</li>
+<li><p>ZeroMQ：ZeroMQ是一种通用的消息传递库，可以支持多种消息模型，包括点对点、发布/订阅和请求/响应等。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>消息传输和协议</strong>：</p>
+<ul>
+<li><p>RabbitMQ：RabbitMQ使用AMQP（高级消息队列协议）作为其默认协议，但也支持其他协议。它通常使用TCP作为底层传输协议。</p>
+</li>
+<li><p>Redis：Redis使用自己的协议，通常运行在TCP上，但也可以配置为运行在Unix套接字上。</p>
+</li>
+<li><p>ZeroMQ：ZeroMQ是一个通用的消息传递库，可以在多种传输协议上运行，包括TCP、IPC（进程间通信）、in-process等。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据结构和用途</strong>：</p>
+<ul>
+<li><p>RabbitMQ：RabbitMQ主要用于构建可靠的消息队列系统，适用于需要确保消息传递可靠性的应用场景，如任务队列、事件驱动架构等。</p>
+</li>
+<li><p>Redis：Redis是一个多功能数据存储系统，虽然它可以用作消息队列，但它更适合用作缓存、快速数据存储和实时分析等。</p>
+</li>
+<li><p>ZeroMQ：ZeroMQ是一个通用的消息传递库，适用于构建实时通信、分布式系统和高性能数据传输应用。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>总之，选择使用RabbitMQ、Redis还是ZeroMQ作为消息队列取决于您的具体需求。如果您需要强调可靠性和持久性，RabbitMQ可能是更好的选择。如果您需要高速数据传输和实时性，Redis可以考虑。如果您需要轻量级且高性能的消息传递库，ZeroMQ可能是一个合适的选择。每个工具都有其自己的优势和适用场景。</p>
+<h1 id="openrsty"><a href="#openrsty" class="headerlink" title="openrsty"></a>openrsty</h1><h2 id="chatgpt介绍-4"><a href="#chatgpt介绍-4" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>“OpenResty” 是一个基于 Nginx 服务器的高性能 Web 应用服务器扩展，它整合了 Nginx 服务器和一组强大的 Lua 模块、库以及第三方模块，使得开发人员可以使用 Lua 编程语言扩展 Nginx 的功能和特性。</p>
+<p>以下是 OpenResty 的主要特点和用途：</p>
+<ol>
+<li><p><strong>性能优化</strong>：OpenResty 以 Nginx 为核心，继承了 Nginx 的高性能和高并发处理能力。同时，通过在 Nginx 上运行 Lua 代码，可以将复杂的业务逻辑从后端应用中转移到服务器端，从而提高性能。</p>
+</li>
+<li><p><strong>动态扩展</strong>：OpenResty 可以通过编写 Lua 脚本来扩展 Nginx 的功能。这意味着您可以根据需要自定义和添加功能，而无需修改 Nginx 的源代码。</p>
+</li>
+<li><p><strong>API 代理</strong>：OpenResty 可以用作反向代理服务器，将请求转发给后端服务器，并支持负载均衡和缓存等功能。它还可以用于 API 网关和请求转发，用于处理和管理 API 请求。</p>
+</li>
+<li><p><strong>Web 应用开发</strong>：开发人员可以使用 Lua 编写 Web 应用程序的后端逻辑，而不仅仅是前端代码。这使得开发人员可以在 Nginx 上构建灵活和高性能的 Web 应用程序。</p>
+</li>
+<li><p><strong>动态内容生成</strong>：OpenResty 可以动态生成内容，包括 HTML 页面、JSON 数据和其他响应内容。这允许开发人员根据请求和数据动态生成响应。</p>
+</li>
+<li><p><strong>安全性</strong>：OpenResty 提供了一些安全性功能，包括对请求进行访问控制、防止恶意请求和攻击、进行身份验证等。</p>
+</li>
+<li><p><strong>活跃社区和插件</strong>：OpenResty 拥有活跃的社区，开发人员可以访问各种插件和模块，以扩展功能和解决特定问题。</p>
+</li>
+</ol>
+<p>总之，OpenResty 是一个强大的 Web 服务器扩展，它通过将 Lua 编程语言与 Nginx 集成，为 Web 应用程序的开发和部署提供了更大的灵活性和性能优势。它在高性能的 Web 服务器领域中具有广泛的应用，特别适用于需要高度定制化和高性能的 Web 服务和应用程序。</p>
+<h2 id="资料-7"><a href="#资料-7" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://www.leixue.com/ask/what-is-openresty">OpenResty是什么 - 泪雪网 (leixue.com)</a></p>
+<p><a target="_blank" rel="noopener" href="http://openresty.org/cn/">OpenResty® - 开源官方站</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/openresty-intro.html">OpenResty 使用介绍 | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30336433/article/details/88733988">OpenResty(nginx+lua) 入门-CSDN博客</a></p>
+<h1 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h1><h2 id="chatgpt介绍-5"><a href="#chatgpt介绍-5" class="headerlink" title="chatgpt介绍"></a>chatgpt介绍</h2><p>Kong（通常称为Kong API Gateway或Kong）是一个开源的、可扩展的 API 网关和微服务管理平台。它旨在帮助开发人员有效地管理和控制微服务架构中的API，并提供了一系列功能来增强API的可用性、性能、安全性和可伸缩性。</p>
+<p>以下是Kong的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>API 管理</strong>：Kong允许开发人员轻松管理多个API端点，包括API版本控制、请求路由、负载均衡、API组合和转发等。</p>
+</li>
+<li><p><strong>请求和响应转换</strong>：Kong可以在API请求和响应之间执行转换，包括请求/响应头修改、协议转换、数据格式转换等，以满足不同客户端的需求。</p>
+</li>
+<li><p><strong>身份验证和授权</strong>：Kong支持多种身份验证和授权机制，包括基本身份验证、OAuth、JWT（JSON Web Tokens）等，以确保只有授权的用户可以访问API。</p>
+</li>
+<li><p><strong>日志和监控</strong>：Kong允许开发人员记录API请求和响应，并集成各种监控和分析工具，以便实时监视API的性能和健康状态。</p>
+</li>
+<li><p><strong>安全性</strong>：Kong提供了一系列安全性功能，包括DDoS（分布式拒绝服务）防护、请求限制、IP黑名单、SSL终止和访问控制等。</p>
+</li>
+<li><p><strong>可伸缩性</strong>：Kong是可伸缩的，可以根据负载的增长来扩展，以处理高并发的请求。它支持分布式部署，可以在多个节点之间分散负载。</p>
+</li>
+<li><p><strong>插件和扩展性</strong>：Kong具有强大的插件系统，允许开发人员编写自定义插件以满足特定需求，或集成现有的插件来扩展功能。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：Kong是一个开源项目，拥有活跃的社区，提供广泛的文档和支持资源。</p>
+</li>
+</ol>
+<p>Kong通常用于构建微服务架构中的API网关，它帮助组织更好地管理和保护他们的API，并提供高级功能，如请求转换、身份验证、监控和日志记录。它适用于各种应用程序和企业，特别是在构建分布式和微服务架构时，可以加速开发和提供可伸缩的API服务。</p>
+<h2 id="资料-8"><a href="#资料-8" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1763882648809856956&amp;wfr=spider&amp;for=pc">为什么使用 Kong API 网关 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/531804692">分布式 API 网关 Kong网关简介 - 知乎 (zhihu.com)</a></p>
+<h1 id="DPDK"><a href="#DPDK" class="headerlink" title="DPDK"></a>DPDK</h1><p>DPDK（Data Plane Development Kit）是一个开源的、高性能数据平面开发工具集，旨在加速数据包处理应用程序的性能。它是一个用于构建网络功能虚拟化（NFV）和软件定义网络（SDN）的工具，也被广泛用于构建高性能网络应用程序、卸载网络数据包处理和提高网络设备的数据平面性能。</p>
+<p>以下是DPDK的一些关键特点和用途：</p>
+<ol>
+<li><p><strong>高性能数据包处理</strong>：DPDK专注于高性能数据包处理，通过减少数据包处理的开销和延迟来提高网络应用程序的性能。它允许用户利用多核处理器来并行处理数据包，从而实现高吞吐量和低延迟。</p>
+</li>
+<li><p><strong>硬件加速</strong>：DPDK支持使用硬件加速技术来提高数据包处理性能，包括使用特定的网络适配器（如Intel的网卡）和硬件加速器。</p>
+</li>
+<li><p><strong>网络虚拟化</strong>：DPDK被广泛用于网络功能虚拟化（NFV）场景，可以帮助虚拟化网络功能，如防火墙、负载均衡、路由器等，以在通用服务器上实现高性能的网络功能。</p>
+</li>
+<li><p><strong>软件定义网络（SDN）</strong>：DPDK支持SDN，允许通过编程方式控制和管理网络设备的数据平面。这使得网络管理员可以动态地配置和优化网络流量。</p>
+</li>
+<li><p><strong>支持多种硬件平台</strong>：DPDK可以在多种硬件平台上运行，包括通用服务器、云服务器和网络设备。</p>
+</li>
+<li><p><strong>开源和社区支持</strong>：DPDK是一个开源项目，拥有活跃的社区，提供广泛的文档、示例和支持资源。</p>
+</li>
+<li><p><strong>多语言支持</strong>：DPDK支持多种编程语言，包括C和Python，以便开发人员可以使用熟悉的编程语言来构建高性能网络应用程序。</p>
+</li>
+</ol>
+<p>DPDK通常用于构建高性能网络应用程序、虚拟网络功能、卸载数据包处理和构建SDN解决方案。它的主要目标是通过利用硬件和多核处理器的性能来提高数据包处理性能，从而满足现代网络应用程序对性能的高要求。DPDK在电信、云计算、数据中心和网络设备制造等领域得到广泛应用。</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/DPDK/20804798?fr=ge_ala">DPDK_百度百科 (baidu.com)</a></p>
+<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>Docker是一种开源的容器化平台，用于将应用程序及其依赖项打包到一个独立的容器中，以便在不同环境中部署和运行。Docker容器是一种轻量级、可移植的运行环境，可以在不同的操作系统和云平台上工作。Docker的核心概念是容器，它允许开发人员将应用程序和其所有依赖项封装到一个一致的单元中。</p>
+<p>以下是Docker的一些关键特点和概念：</p>
+<ol>
+<li><p><strong>容器化</strong>：Docker容器是一个独立的运行环境，包括应用程序和其依赖项，如库、运行时、环境变量等。容器化使得应用程序可以在不同的环境中一致地运行，避免了“在我的机器上可以工作”的问题。</p>
+</li>
+<li><p><strong>轻量级</strong>：与传统虚拟机相比，Docker容器更加轻量级。容器共享主机操作系统的内核，因此它们更快速启动和占用更少的资源。</p>
+</li>
+<li><p><strong>可移植性</strong>：Docker容器可以在不同的操作系统（如Linux、Windows、macOS）和云平台（如AWS、Azure、Google Cloud）上运行，提供了极高的可移植性。</p>
+</li>
+<li><p><strong>版本控制</strong>：Docker容器可以使用版本控制来管理应用程序的不同版本，从而使开发、测试和部署更加可控。</p>
+</li>
+<li><p><strong>快速部署</strong>：Docker容器可以快速部署和扩展，允许开发人员将应用程序迅速推送到生产环境中。</p>
+</li>
+<li><p><strong>容器仓库</strong>：Docker Hub是一个容器仓库，允许开发人员共享和获取容器镜像。它包含了各种常见的应用程序和服务的官方和社区维护的镜像。</p>
+</li>
+<li><p><strong>微服务</strong>：Docker容器常用于构建和部署微服务架构，每个微服务可以打包为一个独立的容器，从而实现松耦合、可伸缩的应用程序架构。</p>
+</li>
+<li><p><strong>开源和生态系统</strong>：Docker是一个开源项目，拥有庞大的生态系统和活跃的社区，提供广泛的文档、教程和插件。</p>
+</li>
+</ol>
+<p>Docker已经成为现代应用程序开发和部署的标准工具之一，它简化了应用程序的交付和维护过程，提高了开发人员的生产力，并加速了应用程序的部署。它在云计算、持续集成和持续交付、DevOps、容器编排等领域得到广泛应用。</p>
+<h2 id="资料-9"><a href="#资料-9" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40500099/article/details/128508582">Docker入门介绍_haven-852的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/leah126/article/details/131871717">Docker入门教程（非常详细）从零基础入门到精通，看完这一篇就够了_docker 入门_leah126的博客-CSDN博客</a></p>
+<h1 id="k8s"><a href="#k8s" class="headerlink" title="k8s"></a>k8s</h1><p>Kubernetes（通常缩写为K8s）是一个开源的容器编排和管理平台，用于自动化容器化应用程序的部署、扩展、管理和运维。它最初由Google开发，后来由云原生计算基金会（CNCF）维护，并吸引了广泛的开发者和社区参与。</p>
+<p>Kubernetes的主要目标是简化容器化应用程序的管理，特别是在大规模和复杂的容器部署环境中。它引入了许多自动化和编排功能，以减轻开发人员和运维人员的负担，使他们能够更轻松地管理容器化应用程序的生命周期。</p>
+<p>以下是Kubernetes的一些关键概念和特点：</p>
+<ol>
+<li><p><strong>容器编排</strong>：Kubernetes允许您定义、部署和管理容器化应用程序，无论这些应用程序是使用Docker、Containerd或其他容器运行时来构建的。</p>
+</li>
+<li><p><strong>自动化部署</strong>：Kubernetes支持自动化的应用程序部署，包括自动伸缩、自动负载均衡和滚动更新。这使得应用程序可以快速响应流量变化和更新需求。</p>
+</li>
+<li><p><strong>容器编排和调度</strong>：Kubernetes负责将容器部署到可用的计算资源上，并确保它们以期望的状态运行。这包括资源分配、容器间通信、高可用性等。</p>
+</li>
+<li><p><strong>服务发现和负载均衡</strong>：Kubernetes提供了内置的服务发现和负载均衡功能，允许容器之间进行动态通信，并将流量均匀分配到应用程序中的不同实例。</p>
+</li>
+<li><p><strong>自我修复</strong>：Kubernetes可以监控容器和应用程序的健康状态，并自动重新启动失败的容器或替换失效的节点，以提高可用性。</p>
+</li>
+<li><p><strong>存储管理</strong>：Kubernetes支持各种存储后端，并提供持久卷（Persistent Volumes）的概念，以便应用程序可以持久化存储数据。</p>
+</li>
+<li><p><strong>配置管理</strong>：Kubernetes允许将应用程序的配置参数独立管理，以便在部署时进行配置更改，而无需重新构建镜像。</p>
+</li>
+<li><p><strong>扩展性</strong>：Kubernetes是高度可扩展的，可以根据需要添加自定义资源定义（Custom Resource Definitions，CRD），以支持自定义的应用程序和服务。</p>
+</li>
+<li><p><strong>多云和混合云支持</strong>：Kubernetes可以在多云和混合云环境中运行，允许在不同云提供商之间迁移和管理容器化应用程序。</p>
+</li>
+</ol>
+<p>总之，Kubernetes是一个功能强大的容器编排和管理平台，适用于构建、部署和运维现代化的容器化应用程序。它已经成为云原生应用程序开发和部署的标准工具之一，并在云计算、DevOps、容器编排等领域广泛应用。</p>
+<h1 id="k8s和docker的区别"><a href="#k8s和docker的区别" class="headerlink" title="k8s和docker的区别"></a>k8s和docker的区别</h1><p>Kubernetes（K8s）和Docker是两个不同但通常一起使用的容器相关的技术。它们在解决不同层面的问题，以下是它们之间的主要区别：</p>
+<ol>
+<li><p><strong>用途和层次</strong>：</p>
+<ul>
+<li><p>Docker：Docker是一种容器化平台，用于创建、打包和分发容器镜像以及运行容器。它关注于应用程序的打包和依赖项管理，并提供了一个容器运行时环境。</p>
+</li>
+<li><p>Kubernetes：Kubernetes是一个容器编排和管理平台，用于自动化容器化应用程序的部署、扩展、管理和运维。它关注于容器的编排、集群管理、服务发现、负载均衡等高级功能。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>抽象级别</strong>：</p>
+<ul>
+<li><p>Docker：Docker操作在容器级别，即打包和运行单个容器。它不直接管理多个容器之间的关系或跨多个主机的容器部署。</p>
+</li>
+<li><p>Kubernetes：Kubernetes操作在容器编排级别，可以管理多个容器的组合，以及它们在集群中的部署、调度和伸缩。它提供了对多个容器的高级编排功能。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>部署和管理</strong>：</p>
+<ul>
+<li><p>Docker：Docker主要用于本地开发和单主机容器部署，它提供了一种简化的容器管理方式。</p>
+</li>
+<li><p>Kubernetes：Kubernetes适用于多主机和生产环境的容器编排。它负责自动化部署、伸缩、负载均衡、故障恢复等任务，使容器集群更加强大和可靠。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>生态系统</strong>：</p>
+<ul>
+<li><p>Docker：Docker提供了Docker Hub等容器仓库，以分享和获取容器镜像。它还有一系列与容器相关的工具和服务，如Docker Compose和Docker Swarm等。</p>
+</li>
+<li><p>Kubernetes：Kubernetes有一个庞大的生态系统，包括各种插件、工具和服务，以支持容器编排、监控、日志管理等任务。它也有自己的容器仓库，如Google Container Registry。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>适用场景</strong>：</p>
+<ul>
+<li><p>Docker：Docker适用于开发人员和本地开发环境，以及单主机部署和测试。它也可以在生产环境中使用，但对于大规模和复杂的部署，可能需要与其他工具（如Kubernetes）结合使用。</p>
+</li>
+<li><p>Kubernetes：Kubernetes适用于构建和管理大规模、高可用性的容器化应用程序，特别是在云和多集群环境中。它是一个更强大的编排和管理平台，适合复杂的微服务架构和容器化应用程序。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>总之，Docker和Kubernetes是两个不同的容器相关技术，它们在容器生命周期的不同阶段发挥作用。Docker用于创建和运行容器，而Kubernetes用于自动化和编排容器的管理。通常，它们一起使用，Docker用于构建容器镜像，而Kubernetes用于在集群中部署和管理这些容器。</p>
+<h2 id="资料-10"><a href="#资料-10" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1761087009511295684&amp;wfr=spider&amp;for=pc">Kubernetes（k8s）与docker的区别 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1767301681053584851&amp;wfr=spider&amp;for=pc">聊聊docker和k8s的区别 (baidu.com)</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">MrAriten</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://MrAriten.github.io/2023/11/23/%E5%85%AB%E8%82%A1/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A1%86%E6%9E%B6/">https://MrAriten.github.io/2023/11/23/%E5%85%AB%E8%82%A1/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A1%86%E6%9E%B6/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">MrAriten</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/11/23/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%A8%A1%E6%9D%BF%E5%8F%8A%E6%8E%A8%E8%8D%90%E9%A2%98%E7%9B%AE/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/coding.jpg" class="responsive-img" alt="并查集模板及推荐题目">
+                        
+                        <span class="card-title">并查集模板及推荐题目</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            并查集可以用来解决归类的问题！
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/" class="post-category">
+                                    编程算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                        <span class="chip bg-color">图论</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/11/22/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/coding.jpg" class="responsive-img" alt="背包问题总结">
+                        
+                        <span class="card-title">背包问题总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            总结了全部背包类型的题解方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/" class="post-category">
+                                    编程算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/about" target="_blank">MrAriten</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">78.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
