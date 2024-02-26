@@ -355,14 +355,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-17
+                    2024-02-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    381
+                    571
                 </div>
                 
 
@@ -392,7 +392,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Latex-VScode配置方法，以及bibtex导入中文文献的问题-vscode配置latex-CSDN博客"><a href="#Latex-VScode配置方法，以及bibtex导入中文文献的问题-vscode配置latex-CSDN博客" class="headerlink" title="Latex+VScode配置方法，以及bibtex导入中文文献的问题_vscode配置latex-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26972735/article/details/93319078">Latex+VScode配置方法，以及bibtex导入中文文献的问题_vscode配置latex-CSDN博客</a></h2><p>先按照这个文档来一步一步安装，但是编译会出现很多问题，主要原因是settings.json的设置，这里我给出我调试好后的设置</p>
+                <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26972735/article/details/93319078">Latex+VScode配置方法，以及bibtex导入中文文献的问题_vscode配置latex-CSDN博客</a></p>
+<p>先按照这个文档来一步一步安装，但是编译会出现很多问题，主要原因是settings.json的设置，这里我给出我调试好后的设置</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"latex-workshop.latex.autoBuild.run"</span><span class="token operator">:</span> <span class="token string">"never"</span><span class="token punctuation">,</span>
   <span class="token property">"latex-workshop.showContextMenu"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -528,6 +529,24 @@
 <p>在setting.json中按这个设置绝对没问题</p>
 <p>参考：<br>[latex报错：Citation ‘××××‘ on page x undefined.与众不同的解决方案_vscode中latex citation `abd2019deep’ on page 2 unde-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38397338/article/details/108193853?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-108193853-blog-129539364.235%5Ev38%5Epc_relevant_anti_vip_base&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-108193853-blog-129539364.235%5Ev38%5Epc_relevant_anti_vip_base&amp;utm_relevant_index=5">https://blog.csdn.net/qq_38397338/article/details/108193853?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-108193853-blog-129539364.235^v38^pc_relevant_anti_vip_base&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-108193853-blog-129539364.235^v38^pc_relevant_anti_vip_base&amp;utm_relevant_index=5</a>)</p>
 <p>[texlive, Package pdftex.def: File `xx-eps-converted-to.pdf‘ not found: using draft setting.-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/tangsaishi4302/article/details/131706018">https://blog.csdn.net/tangsaishi4302/article/details/131706018</a>)</p>
+<h2 id="第二次打开vscode发现编译出错？settings-json没问题怎么办"><a href="#第二次打开vscode发现编译出错？settings-json没问题怎么办" class="headerlink" title="第二次打开vscode发现编译出错？settings.json没问题怎么办"></a>第二次打开vscode发现编译出错？settings.json没问题怎么办</h2><p>首先在这个地方，选择你需要的编译顺序，</p>
+<p><img src="https://img-blog.csdnimg.cn/20200217194136975.png#pic_center" alt="2-16"></p>
+<p>如果发现有些编译顺序执行不了，报下面这个错误，就说明不是源地址</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45679929/article/details/128826054">解决：VScode运行tex文件时出现“Cannot find LaTeX root file”_vscode打开tex_快乐的梅尔索的博客-CSDN博客</a></p>
+<p>按着上面的提示改，就能恢复原样了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41554005/article/details/120712049">Latex参考文献引用失败 报错 LaTeX Warning: Citation “*****” on page y undefined on input line *-CSDN博客</a></p>
+<p>还有就是最好选择编译次数多的，否则编译很多引用都无法通过</p>
+<pre class="line-numbers language-none"><code class="language-none">{
+    "name": "pdflatex -&gt; bibtex -&gt; pdflatex*2",
+    "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+    ]
+},<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最好选这个命令，这样编译就不会错了</p>
 
                 
             </div>
@@ -873,7 +892,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2023</span>
+                <span id="year">2023-2024</span>
             
             <a href="/about" target="_blank">MrAriten</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -882,7 +901,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">81.5k</span>
+                        class="white-color">81.7k</span>
             
             
             
